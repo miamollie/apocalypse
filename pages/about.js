@@ -1,18 +1,17 @@
 import React from "react";
 import Head from "next/head";
 import Nav from "../components/nav";
-import Form from "../components/form";
 
-const Home = () => (
+const About = () => (
   <>
     <Head>
-      <title>Apocalypso</title>
+      <title>About</title>
     </Head>
     <Nav />
     <main>
-      <Form />
+      <article>This details the assesment criteria</article>
     </main>
   </>
 );
 
-export default Home;
+export default About;
