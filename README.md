@@ -1,8 +1,10 @@
 ## TODO
 
 - [ ] Add Risk assesment formula
-- [ ] Import Material
-- [ ] Scaffold UI
+- [x] Import Material
+- [x] Scaffold UI
 - [ ] Add tests
 - [ ] Add a proper readme
-- [ ] Refactor to a page component
+- [x] Refactor to a page component
+- [ ] Typescriptify
+- [ ] Form data validation
