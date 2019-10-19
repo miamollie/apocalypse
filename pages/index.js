@@ -1,18 +1,11 @@
 import React from "react";
-import Head from "next/head";
-import Nav from "../components/nav";
 import Form from "../components/form";
+import Page from "../components/page";
 
 const Home = () => (
-  <>
-    <Head>
-      <title>Apocalypso</title>
-    </Head>
-    <Nav />
-    <main>
-      <Form />
-    </main>
-  </>
+  <Page title="Apocalyspo">
+    <Form />
+  </Page>
 );
 
 export default Home;

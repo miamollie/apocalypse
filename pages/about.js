@@ -1,17 +1,10 @@
 import React from "react";
-import Head from "next/head";
-import Nav from "../components/nav";
+import Page from "../components/page";
 
 const About = () => (
-  <>
-    <Head>
-      <title>About</title>
-    </Head>
-    <Nav />
-    <main>
-      <article>This details the assesment criteria</article>
-    </main>
-  </>
+  <Page title="About"> 
+    <article>This details the assesment criteria</article>
+  </Page>
 );
 
 export default About;
