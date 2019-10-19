@@ -1,74 +1,108 @@
-import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Button from '@material-ui/core/Button';
+import React from "react";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
+import Button from "@material-ui/core/Button";
+import assess from "../utils/assess";
+import { useState } from "react";
 
 export default function Form() {
+  const initialValues = {
+    a: false,
+    b: false,
+    c: false,
+    age: ""
+  };
+
+  const handleChangeSwitch = name => event => {
+    setValues({ ...values, [name]: event.target.checked });
+  };
+
+  const handleChange = name => event => {
+    setValues({ ...values, [name]: event.target.value });
+  };
+
+  //reset form
+
+  const reset = () => {
+    setValues({ ...initialValues });
+  };
+
+  const [values, setValues] = useState(initialValues);
+
   return (
-    <>
+    <form
+      style={{ padding: "30px" }}
+      onSubmit={e => {
+        e.preventDefault();
+        assess(values);
+      }}
+    >
       <Typography variant="h6" gutterBottom>
         Enter patient details
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <TextField
-            id="address2"
-            name="address2"
-            label="Address line 2"
-            fullWidth            
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
+            id="age"
+            label="Age"
+            value={values.age}
+            onChange={handleChange("age")}
+            type="number"
             required
-            id="city"
-            name="city"
-            label="City"
-            fullWidth            
-          />
-        </Grid>
-
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="zip"
-            name="zip"
-            label="Zip / Postal code"
-            fullWidth            
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
-            id="country"
-            name="country"
-            label="Country"
-            fullWidth            
           />
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel
-            control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
+            control={
+              <Switch
+                color="secondary"
+                name="a"
+                checked={values.a}
+                value="a"
+                onChange={handleChangeSwitch("a")}
+              />
+            }
             label="True or false thing"
           />
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel
-            control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-            label="True or false thing"
+            control={
+              <Switch
+                color="secondary"
+                name="b"
+                checked={values.b}
+                value="b"
+                onChange={handleChangeSwitch("b")}
+              />
+            }
+            label="Drugs"
           />
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel
-            control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-            label="True or false thing"
+            control={
+              <Switch
+                color="secondary"
+                name="c"
+                checked={values.c}
+                value="c"
+                onChange={handleChangeSwitch("c")}
+              />
+            }
+            label="Smoker"
           />
         </Grid>
       </Grid>
-      <Button>Calculate Risk</Button>
-    </>
+      <Button color="primary" fullWidth size="large" type="submit">
+        Calculate Risk
+      </Button>
+      <Button color="secondary" fullWidth size="large" onClick={reset}>
+        Reset
+      </Button>
+    </form>
   );
 }
