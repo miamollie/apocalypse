@@ -1,6 +1,13 @@
 import calculateBMI from "./bmi";
 
-const riskFactors = ["heighBloodPressure", "male", "smoker"];
+const riskFactors = [
+  "heighBloodPressure",
+  "male",
+  "snore",
+  "sleepChoking",
+  "dailyFatigue",
+  "sleepApnoea"
+];
 
 export default function calculateStopBang({
   age,
@@ -15,7 +22,6 @@ export default function calculateStopBang({
   if (bmi > 35) res++;
   if (neckCircumference > 43) res++;
   if (age > 50) res++;
-
   riskFactors.forEach(f => {
     if (data[f]) res++;
   });

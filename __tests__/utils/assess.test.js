@@ -1,12 +1,12 @@
 import calculateStopBang from "../../utils/assess";
+import patients from "../../fixtures";
 
 const testData = [
-  [
-    { height: 170, weight: 60, male: true, age: 52, neckCircumference: 45 },
-    true
-  ]
-  //   [{ height: 200, weight: 100 }, 25],
-  //   [{ height: 180, weight: 300 }, 93]
+    [patients[0], true],
+    [patients[1], true],
+    [patients[2], true],
+    [patients[3], true],
+    [patients[4], true],
 ];
 
 describe("Stop Bang assessment", () => {
