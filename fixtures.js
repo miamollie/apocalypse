@@ -48,14 +48,14 @@ const patients = [
     sleepApnoea: false
   },
   {
-    height: 200,
+    height: 180,
     weight: 100,
     male: true,
     age: 22,
     heighBloodPressure: false,
     neckCircumference: 25,
-    snore: false,
-    dailyFatigue: false,
+    snore: true,
+    dailyFatigue: true,
     sleepChoking: false,
     sleepApnoea: false
   }
