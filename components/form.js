@@ -3,7 +3,11 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
 import Switch from "@material-ui/core/Switch";
+import Select from "@material-ui/core/Select";
 import Button from "@material-ui/core/Button";
 import calculateStopBang from "../utils/assess";
 import { useState } from "react";
@@ -12,9 +16,14 @@ export default function Form() {
   const initialValues = {
     height: "",
     weight: "",
-    gender: false,
     age: "",
-    neckCircumference: ""
+    neckCircumference: "",
+    male: false,
+    highBloodPressure: false,
+    snore: false,
+    dailyFatigue: false,
+    sleepChoking: false,
+    sleepApnoea: false
   };
 
   const handleChangeSwitch = name => event => {
@@ -45,7 +54,7 @@ export default function Form() {
         Enter patient details
       </Typography>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
+        <Grid item xs={6}>
           <TextField
             id="age"
             label="Age"
@@ -55,7 +64,23 @@ export default function Form() {
             required
           />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={6}>
+          <FormControl>
+            <InputLabel htmlFor="male">Gender</InputLabel>
+            <Select
+              value={values.male}
+              onChange={handleChange("male")}
+              inputProps={{
+                name: "male",
+                id: "male"
+              }}
+            >
+              <MenuItem value={false}>Female</MenuItem>
+              <MenuItem value={true}>Male</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs={6}>
           <TextField
             id="weight"
             label="Weight"
@@ -65,7 +90,7 @@ export default function Form() {
             required
           />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={6}>
           <TextField
             id="height"
             label="Height"
@@ -75,28 +100,28 @@ export default function Form() {
             required
           />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={12}>
           <TextField
             id="neckCircumference"
-            label="Neck"
+            label="Neck Circumference"
             value={values.neckCircumference}
             onChange={handleChange("neckCircumference")}
             type="number"
             required
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12}>
           <FormControlLabel
             control={
               <Switch
                 color="secondary"
-                name="gender"
-                checked={values.gender}
-                value="gender"
-                onChange={handleChangeSwitch("gender")}
+                name="highBloodPressure"
+                checked={values.highBloodPressure}
+                value="highBloodPressure"
+                onChange={handleChangeSwitch("highBloodPressure")}
               />
             }
-            label="Male or female" //todo: nicer way to display in UI
+            label="Heigh blood pressure"
           />
         </Grid>
         <Grid item xs={12}>
@@ -104,13 +129,13 @@ export default function Form() {
             control={
               <Switch
                 color="secondary"
-                name="b"
-                checked={values.b}
-                value="b"
-                onChange={handleChangeSwitch("b")}
+                name="snore"
+                checked={values.snore}
+                value="snore"
+                onChange={handleChangeSwitch("snore")}
               />
             }
-            label="Drugs"
+            label="Snore"
           />
         </Grid>
         <Grid item xs={12}>
@@ -118,13 +143,41 @@ export default function Form() {
             control={
               <Switch
                 color="secondary"
-                name="c"
-                checked={values.c}
-                value="c"
-                onChange={handleChangeSwitch("c")}
+                name="dailyFatigue"
+                checked={values.dailyFatigue}
+                value="dailyFatigue"
+                onChange={handleChangeSwitch("dailyFatigue")}
               />
             }
-            label="Smoker"
+            label="Daily Fatigue"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <FormControlLabel
+            control={
+              <Switch
+                color="secondary"
+                name="sleepChoking"
+                checked={values.sleepChoking}
+                value="sleepChoking"
+                onChange={handleChangeSwitch("sleepChoking")}
+              />
+            }
+            label="Sleep choking"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <FormControlLabel
+            control={
+              <Switch
+                color="secondary"
+                name="sleepApnoea"
+                checked={values.sleepApnoea}
+                value="sleepApnoea"
+                onChange={handleChangeSwitch("sleepApnoea")}
+              />
+            }
+            label="Sleep Apnoea"
           />
         </Grid>
       </Grid>

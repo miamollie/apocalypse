@@ -1,7 +1,7 @@
 import calculateBMI from "./bmi";
 
 const riskFactors = [
-  "heighBloodPressure",
+  "highBloodPressure",
   "male",
   "snore",
   "sleepChoking",
