@@ -5,15 +5,16 @@ import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Switch from "@material-ui/core/Switch";
 import Button from "@material-ui/core/Button";
-import assess from "../utils/assess";
+import calculateStopBang from "../utils/assess";
 import { useState } from "react";
 
 export default function Form() {
   const initialValues = {
-    a: false,
-    b: false,
-    c: false,
-    age: ""
+    height: "",
+    weight: "",
+    gender: false,
+    age: "",
+    neckCircumference: ""
   };
 
   const handleChangeSwitch = name => event => {
@@ -37,7 +38,7 @@ export default function Form() {
       style={{ padding: "30px" }}
       onSubmit={e => {
         e.preventDefault();
-        assess(values);
+        calculateStopBang(values);
       }}
     >
       <Typography variant="h6" gutterBottom>
@@ -54,18 +55,48 @@ export default function Form() {
             required
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={4}>
+          <TextField
+            id="weight"
+            label="Weight"
+            value={values.weight}
+            onChange={handleChange("weight")}
+            type="number"
+            required
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <TextField
+            id="height"
+            label="Height"
+            value={values.height}
+            onChange={handleChange("height")}
+            type="number"
+            required
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <TextField
+            id="neckCircumference"
+            label="Neck"
+            value={values.neckCircumference}
+            onChange={handleChange("neckCircumference")}
+            type="number"
+            required
+          />
+        </Grid>
+        <Grid item xs={6}>
           <FormControlLabel
             control={
               <Switch
                 color="secondary"
-                name="a"
-                checked={values.a}
-                value="a"
-                onChange={handleChangeSwitch("a")}
+                name="gender"
+                checked={values.gender}
+                value="gender"
+                onChange={handleChangeSwitch("gender")}
               />
             }
-            label="True or false thing"
+            label="Male or female" //todo: nicer way to display in UI
           />
         </Grid>
         <Grid item xs={12}>
