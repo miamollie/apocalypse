@@ -19,7 +19,7 @@ export default function Form() {
     age: "",
     neckCircumference: "",
     male: false,
-    heighBloodPressure: false,
+    highBloodPressure: false,
     snore: false,
     dailyFatigue: false,
     sleepChoking: false,
@@ -115,10 +115,10 @@ export default function Form() {
             control={
               <Switch
                 color="secondary"
-                name="heighBloodPressure"
-                checked={values.heighBloodPressure}
-                value="heighBloodPressure"
-                onChange={handleChangeSwitch("heighBloodPressure")}
+                name="highBloodPressure"
+                checked={values.highBloodPressure}
+                value="highBloodPressure"
+                onChange={handleChangeSwitch("highBloodPressure")}
               />
             }
             label="Heigh blood pressure"
