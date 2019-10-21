@@ -14,11 +14,11 @@ import { useState } from 'react';
 import { PatientData } from '../types';
 
 export default function Form() {
-    const initialValues = {
-        height: '',
-        weight: '',
-        age: '',
-        neckCircumference: '',
+    const initialValues: PatientData = {
+        height: 0,
+        weight: 0,
+        age: 0,
+        neckCircumference: 0,
         male: false,
         highBloodPressure: false,
         snore: false,
@@ -29,12 +29,16 @@ export default function Form() {
 
     const [values, setValues] = useState(initialValues);
 
-    const handleChangeSwitch = (name: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChangeSwitch = (name: string) => (event: React.ChangeEvent<{ checked: any }>) => {
         setValues({ ...values, [name]: event.target.checked });
     };
 
-    const handleChange = (name: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-        setValues({ ...values, [name]: event.target.value });
+    const handleChange = (name: string) => (
+        event: React.ChangeEvent<{ value: any }> | React.ChangeEvent<HTMLSelectElement>
+    ) => {
+        const val = event.target.value;
+        const casteVal = typeof val === 'boolean' ? val : parseInt(val, 10);
+        setValues({ ...values, [name]: casteVal });
     };
 
     const reset = () => {
@@ -46,13 +50,7 @@ export default function Form() {
             style={{ padding: '30px' }}
             onSubmit={e => {
                 e.preventDefault();
-                calculateStopBang({
-                    ...values,
-                    height: parseFloat(values.height),
-                    weight: parseFloat(values.weight),
-                    age: parseFloat(values.age),
-                    neckCircumference: parseFloat(values.neckCircumference),
-                });
+                calculateStopBang(values);
             }}
         >
             <Typography variant="h6" gutterBottom>
@@ -80,8 +78,8 @@ export default function Form() {
                                 id: 'male',
                             }}
                         >
-                            <MenuItem value={false}>Female</MenuItem>
-                            <MenuItem value={true}>Male</MenuItem>
+                            <MenuItem value="female">Female</MenuItem>
+                            <MenuItem value="male">Male</MenuItem>
                         </Select>
                     </FormControl>
                 </Grid>
