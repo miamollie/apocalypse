@@ -1,4 +1,6 @@
-const patients = [
+import { PatientData } from './types';
+
+const patients: PatientData = [
     {
         height: 170,
         weight: 60,
@@ -60,5 +62,3 @@ const patients = [
         sleepApnoea: false,
     },
 ];
-
-export default patients;

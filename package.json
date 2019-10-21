@@ -8,9 +8,10 @@
     "dev": "next dev",
     "export": "next export",
     "start": "next start",
-    "lint": "eslint components pages utils --ext .js && prettier --check '*.js'",
-    "format": "eslint --fix components pages utils --ext .js && prettier --write '*.js'",
-    "test": "jest"
+    "lint": "eslint components pages utils --ext .tsx --ext .ts && prettier --check '**/*.{ts,tsx}'",
+    "format": "eslint --fix components pages utils --ext .tsx --ext .ts && prettier --write '*.{ts,tsx}'",
+    "test": "jest",
+    "typecheck": "tsc"
   },
   "dependencies": {
     "@material-ui/core": "^4.5.1",
@@ -30,6 +31,8 @@
     "eslint-plugin-react": "^7.16.0",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
+    "@types/node": "^12.11.1",
+    "@types/react": "^16.9.9",
     "typescript": "^3.6.4"
   }
 }

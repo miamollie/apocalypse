@@ -4,7 +4,8 @@
 
 - [ ] Typescriptify
 - [ ] Show risk number in UI on reroute
-- [ ] run tests on push
+- [x] add eslint
+- [x] run tests on push
 - [ ] Add a proper readme
 - [ ] Move to Formik and add form validation //https://dunglas.fr/2019/05/using-next-js-and-material-ui/
 - [x] Add Risk assesment formula

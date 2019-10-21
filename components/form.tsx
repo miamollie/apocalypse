@@ -11,6 +11,7 @@ import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import calculateStopBang from '../utils/assess';
 import { useState } from 'react';
+import { PatientData } from '../types';
 
 export default function Form() {
     const initialValues = {
@@ -26,11 +27,13 @@ export default function Form() {
         sleepApnoea: false,
     };
 
-    const handleChangeSwitch = name => event => {
+    const [values, setValues] = useState(initialValues);
+
+    const handleChangeSwitch = (name: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
         setValues({ ...values, [name]: event.target.checked });
     };
 
-    const handleChange = name => event => {
+    const handleChange = (name: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
         setValues({ ...values, [name]: event.target.value });
     };
 
@@ -38,14 +41,18 @@ export default function Form() {
         setValues({ ...initialValues });
     };
 
-    const [values, setValues] = useState(initialValues);
-
     return (
         <form
             style={{ padding: '30px' }}
             onSubmit={e => {
                 e.preventDefault();
-                calculateStopBang(values);
+                calculateStopBang({
+                    ...values,
+                    height: parseFloat(values.height),
+                    weight: parseFloat(values.weight),
+                    age: parseFloat(values.age),
+                    neckCircumference: parseFloat(values.neckCircumference),
+                });
             }}
         >
             <Typography variant="h6" gutterBottom>

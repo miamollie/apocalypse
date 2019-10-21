@@ -1,22 +1,22 @@
 import calculateBMI from './bmi';
+import { PatientData, RiskFactors } from '../types';
 
-const riskFactors = [
+const riskFactors: RiskFactors[] = [
     'highBloodPressure',
     'male',
     'snore',
     'sleepChoking',
     'dailyFatigue',
     'sleepApnoea',
-];
+]; //todo be smarter about this
 
 export default function calculateStopBang({
     age,
     height,
     weight,
     neckCircumference,
-    gender,
     ...data
-}) {
+}: PatientData) {
     let res = 0;
     const bmi = calculateBMI({ height, weight });
     if (bmi > 35) res++;
