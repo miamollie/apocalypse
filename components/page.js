@@ -5,7 +5,7 @@ import Nav from '../components/nav';
 const Page = ({ title, children }) => (
     <>
         <Head>
-            <title>{title}</title>
+            <title>Apocalyso {title && `- ${title}`}</title>
         </Head>
         <Nav />
         <main>{children}</main>
