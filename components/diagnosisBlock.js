@@ -1,15 +1,28 @@
 import React from 'react';
+// import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
-const DiagnosisBlock = ({ test }) => {
+const DiagnosisBlock = ({ test, result }) => {
     const copy = {
-        healthyPatient: 'Patient has no risks.',
         stopBang: 'A message about a positive result from the stop bang thing',
         bmi: 'bmi...',
         thirdTest: 'derp derp derp derp',
     }[test];
-    return <article>{copy}</article>;
-};
 
-//use the nextJS css in js style in material doesnt have something
+    // how to indicate pass/fail in the ui?
+    return (
+        <Card>
+            <CardContent>
+                <Typography color="textSecondary" gutterBottom>
+                    {copy}
+                    <br />
+                    {result}
+                </Typography>
+            </CardContent>
+        </Card>
+    );
+};
 
 export default DiagnosisBlock;

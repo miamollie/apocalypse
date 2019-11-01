@@ -6,16 +6,17 @@ import { useRouter } from 'next/router';
 const Result = () => {
     const router = useRouter();
     const { stopBang, bmi, example } = router.query;
-    const noRisks = !stopBang && !bmi && !example;
-    //query obj keys loop instead (more extendable)
+    //query obj keys loop instead (more extendable..?)
 
     return (
         <Page title="Result">
-            {!router.query && '...'}
-            {noRisks && <DiagnosisBlock test="healthyPatient" />}
-            {stopBang && <DiagnosisBlock test="stopBang" />}
-            {bmi && <DiagnosisBlock test="bmi" />}
-            {example && <DiagnosisBlock test="example" />}
+            {!Object.keys(router.query).length &&
+                'No result... try searching or add a new patient Here'}
+            {/* periop in a dropdown e.g. recommended tests. Open if Exists data, closed otherwise. */}
+            {stopBang && <DiagnosisBlock result={stopBang} test="stopBang" />}
+            {bmi && <DiagnosisBlock result={bmi} test="bmi" />}
+            {example && <DiagnosisBlock result={example} test="example" />}
+            {/* other stuff relevant to operating theatre in a dropdown */}
         </Page>
     );
 };
