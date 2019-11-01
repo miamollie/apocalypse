@@ -57,7 +57,7 @@ export default function Form() {
             }}
         >
             <Typography variant="h6" gutterBottom>
-                Enter patient details
+                Patient Assessment
             </Typography>
             <Grid container spacing={3}>
                 <Grid item xs={6}>

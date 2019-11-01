@@ -1,13 +1,13 @@
 import React from 'react';
 import Head from 'next/head';
-import Nav from '../components/nav';
+// import Nav from '../components/nav';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
-import SearchIcon from '@material-ui/icons/Search';
+import Paper from '@material-ui/core/Paper';
+import Container from '@material-ui/core/Container';
 
 const Page = ({ title, children }) => (
     <>
@@ -18,17 +18,14 @@ const Page = ({ title, children }) => (
             <Toolbar>
                 <IconButton edge="start" color="inherit" aria-label="menu">
                     <MenuIcon />
-                    {/* TODO menu should open as Nav */}
+                    {/* TODO menu should open as Nav with home and about */}
                 </IconButton>
                 <Typography variant="h6">Apocalyso</Typography>
-                <Button color="inherit">
-                    <SearchIcon />
-                    Search
-                </Button>
             </Toolbar>
         </AppBar>
-        <Nav />
-        <main>{children}</main>
+        <Container component="main" maxWidth="m" style={{ marginTop: '50px' }}>
+            <Paper>{children}</Paper>
+        </Container>
     </>
 );
 
