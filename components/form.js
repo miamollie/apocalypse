@@ -16,10 +16,10 @@ import Router from 'next/router';
 
 export default function Form() {
     const initialValues = {
-        height: '',
-        weight: '',
-        age: '',
-        neckCircumference: '',
+        height: '22',
+        weight: '22',
+        age: '22',
+        neckCircumference: '22',
         male: false,
         highBloodPressure: false,
         snore: false,
