@@ -10,14 +10,16 @@ import Switch from '@material-ui/core/Switch';
 import Select from '@material-ui/core/Select';
 import Button from '@material-ui/core/Button';
 import calculateStopBang from '../utils/assess';
+import calculateBMI from '../utils/bmi';
 import { useState } from 'react';
+import Router from 'next/router';
 
 export default function Form() {
     const initialValues = {
-        height: '',
-        weight: '',
-        age: '',
-        neckCircumference: '',
+        height: '22',
+        weight: '22',
+        age: '22',
+        neckCircumference: '22',
         male: false,
         highBloodPressure: false,
         snore: false,
@@ -45,11 +47,17 @@ export default function Form() {
             style={{ padding: '30px' }}
             onSubmit={e => {
                 e.preventDefault();
-                calculateStopBang(values);
+                const stopBang = calculateStopBang(values); //currently calculating BMI twice but just for illustrative purposes
+                const bmi = calculateBMI({ height: values.height, weight: values.weight });
+
+                //TODO refactor into redirect with params
+                Router.push(`/result?stopBang=${stopBang}&bmi=${bmi}&example=true`);
+
+                //TODO disable form with validation errors (Formik?)
             }}
         >
             <Typography variant="h6" gutterBottom>
-                Enter patient details
+                Patient Assessment
             </Typography>
             <Grid container spacing={3}>
                 <Grid item xs={6}>
