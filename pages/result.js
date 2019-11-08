@@ -13,16 +13,18 @@ import Grid from '@material-ui/core/Grid';
 const Result = () => {
     const router = useRouter();
     const { stopBang, bmi, example } = router.query;
-    //query obj keys loop instead (more extendable..?)
+    const assessments = Object.keys(router.query);
+
+    //TODO filter assessments for preop vs postop results when you know, then loop over
 
     return (
         <Page title="Result">
-            {!Object.keys(router.query).length ? (
-                <Typography>
-                    No result. Submit new patient
-                    <Link href="/">
-                        <a>here</a>
-                    </Link>
+            <Typography variant="h6" gutterBottom>
+                Patient Result
+            </Typography>
+            {!assessments.length ? (
+                <Typography variant="body1">
+                    No result. Submit new patient <Link href="/">here</Link>
                 </Typography>
             ) : (
                 <Grid container spacing={3}>

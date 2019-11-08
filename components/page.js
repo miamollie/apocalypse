@@ -24,7 +24,7 @@ const Page = ({ title, children }) => (
             </Toolbar>
         </AppBar>
         <Container component="main" maxWidth="m" style={{ marginTop: '50px' }}>
-            <Paper>{children}</Paper>
+            <Paper style={{ padding: '30px' }}>{children}</Paper>
         </Container>
     </>
 );

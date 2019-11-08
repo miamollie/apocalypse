@@ -9,8 +9,7 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
     avatar: props => ({
-        // backgroundColor: props.result ? 'green' : 'red',
-        backgroundColor: 'red',
+        backgroundColor: props.result ? 'green' : 'red',
     }),
 });
 
@@ -48,7 +47,7 @@ const DiagnosisBlock = props => {
             <CardHeader
                 title={testName}
                 subheader={subheader}
-                avatar={<Avatar classes={classes.avatar} />}
+                avatar={<Avatar className={classes.avatar}>{result ? 'P' : 'F'}</Avatar>}
             />
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p" gutterBottom>

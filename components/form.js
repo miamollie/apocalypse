@@ -44,7 +44,6 @@ export default function Form() {
 
     return (
         <form
-            style={{ padding: '30px' }}
             onSubmit={e => {
                 e.preventDefault();
                 const stopBang = calculateStopBang(values); //currently calculating BMI twice but just for illustrative purposes
