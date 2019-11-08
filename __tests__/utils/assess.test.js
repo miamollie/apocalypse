@@ -1,5 +1,5 @@
-import calculateStopBang from "../../utils/assess";
-import patients from "../../fixtures";
+import calculateStopBang from '../../utils/assess';
+import patients from '../../fixtures';
 
 const testData = [
     [patients[0], true],
@@ -9,9 +9,9 @@ const testData = [
     [patients[4], true],
 ];
 
-describe("Stop Bang assessment", () => {
-  test.each(testData)("given %p returns %p", (patientData, expectedResult) => {
-    const result = calculateStopBang(patientData);
-    expect(result).toEqual(expectedResult);
-  });
+describe('Stop Bang assessment', () => {
+    test.each(testData)('given %p returns %p', (patientData, expectedResult) => {
+        const result = calculateStopBang(patientData);
+        expect(result).toEqual(expectedResult);
+    });
 });
